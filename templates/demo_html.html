@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script><div>-->
+
+
+<!--            <div id="1d32dfaf-4e41-4986-8c14-4b0e658645e9" class="plotly-graph-div" style="height:100%; width:100%;"></div>-->
+<!--            <script type="text/javascript">-->
+
+<!--                    window.PLOTLYENV=window.PLOTLYENV || {};-->
+<!--                    window.PLOTLYENV.BASE_URL='https://plot.ly';-->
+
+<!--                if (document.getElementById("1d32dfaf-4e41-4986-8c14-4b0e658645e9")) {-->
+<!--                    Plotly.newPlot(-->
+<!--                        '1d32dfaf-4e41-4986-8c14-4b0e658645e9',-->
+<!--                        [{"type": "scatter", "uid": "6456738e-00b4-46f2-bdc4-497910f62103", "x": [1, 2, 3, 4], "y": [10, 15, 13, 17]}, {"type": "scatter", "uid": "59fe7178-2332-466a-8021-30c55fbcb852", "x": [1, 2, 3, 4], "y": [16, 5, 11, 9]}],-->
+<!--                        {},-->
+<!--                        {"showLink": false, "linkText": "Export to plot.ly", "responsive": true, "plotlyServerURL": "https://plot.ly"}-->
+<!--                    )-->
+<!--                };-->
+
+<!--            </script>-->
+<!--        </div>-->
+
+<script>
+  function nameFunction(){
+    var r = document.createElement('span');
+    var y = document.createElement("INPUT");
+    y.setAttribute("type", "text");
+    y.setAttribute("placeholder", "Name");
+    var g = document.createElement("IMG");
+    g.setAttribute("src", "delete.png");
+    y.setAttribute("Name", "textelement_" + i);
+    r.appendChild(y);
+    g.setAttribute("onclick", "removeElement('myForm','id_" + i + "')");
+    r.appendChild(g);
+    r.setAttribute("id", "id_" + i);
+    document.getElementById("myForm").appendChild(r);
+  }
+  function getScatterForm(){
+    // alert("andar to aa hi gaya mein");
+    var number = 5;
+    // document.getElementById("member").value;
+    // Container <div> where dynamic content will be placed
+    var container = document.getElementById("container");
+    // Clear previous contents of the container
+    // alert("yaha bhi aa gaya");
+    // while (container.hasChildNodes()) {
+    //   // alert("iske andar kaise aa gaya mein");
+    //   container.removeChild(container.lastChild);
+    // }
+    // alert("yaha bhi aa gaya");
+    for (i=0;i<number;i++){
+      container.appendChild(document.createTextNode("Member " + (i+1)));
+      var input = document.createElement("input");
+      input.type = "text";
+      input.name = "member" + i;
+      container.appendChild(input);
+      container.appendChild(document.createElement("br"));
+    }
+    // alert("yaha bhi aa gaya");
+    var button = document.createElement("button");
+    button.type = 'button';
+    button.name = "submitButton";
+    button.id = "submitButton";
+    container.appendChild(button);
+    container.appendChild(document.createElement("br"));
+    alert("ab to khatm bhi ho gaya");
+  }
+  function doSomething() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+      document.write(this.responseText);
+      // $("body").html(responseText);
+      }
+    };
+    xhttp.open("GET", "/get_graph", true);
+    xhttp.send();
+  }
+  function getHistogram() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+      document.write(this.responseText);
+      // $("body").html(responseText);
+      }
+    };
+    xhttp.open("GET", "/get_histogram", true);
+    xhttp.send();
+  }
+  function getPieChart() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+      document.write(this.responseText);
+      // $("body").html(responseText);
+      }
+    };
+    xhttp.open("GET", "/get_pie_chart", true);
+    xhttp.send();
+  }
+  function getScatteredGraph() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+      document.write(this.responseText);
+      // $("body").html(responseText);
+      }
+    };
+    xhttp.open("GET", "/get_scattered_graph", true);
+    xhttp.send();
+  }
+  
+  function getTable(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200){
+        document.getElementById("demo").innerHTML = this.responseText;
+        document.write(this.responseText);
+      }
+    };
+    xhttp.open("GET", "/get_table", true);
+    xhttp.send();
+  }
+</script>
+
+<img src="https://conceptdraw.com/a424c4/p1/preview/640/pict--scatter-chart-quality-characteristic-xxx" onclick="getScatterForm()">
+<img src="https://www.mathworks.com/help/examples/matlab/win64/SavingAndLoadingHistogramObjectsExample_01.png" onclick="getHistogram()">
+<img src="https://www.thoughtworks.com/mingle/docs/resources/images/ec_piechart_status.png" onclick="getPieChart()">
+<img src="http://www.leoisaac.com/com/images/numberedtable.gif" onclick="getTable()">
+<div id="container"></div>
+<div id="demo">
+  <h2>Let AJAX change this text</h2>
+  <button type="button" onclick="doSomething()">Draw linear Graph</button>
+  <button type="button" onclick="getHistogram()">Draw Histogram</button>
+  <button type="button" onclick="getPieChart()">Draw PieChart</button>
+  <button type="button" onclick="getScatteredGraph()">Draw ScatteredGraph</button>
+  <button type="button" onclick="getTable()">Draw Table</button>
+</div>
+
+
+</body>
+</html>
