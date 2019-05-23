@@ -2,9 +2,14 @@ from flask import Flask
 from flask import render_template
 import plotly as py
 import plotly.graph_objs as go
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_url_path='/static')
 import numpy as np
 import pandas as pd
+
+from Visualize import *
+from Data_frame_operations import *
+data_frame = read_file("data.csv")
+
 
 # plotly.tools.set_credentials_file(username='zaidRaza', api_key='uADqV4uvTk7KJxzXWusP')
 ImportedJs = '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
@@ -31,6 +36,10 @@ ImportedJs = '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
 def root():
     return render_template('demo_html.html')
 
+@app.route('/getForm')
+def form():
+	return render_template('form.html')
+
 
 @app.route('/get_graph')
 def index():
@@ -43,7 +52,7 @@ def index():
     	y=[16, 5, 11, 9]
     	)# data = [ trace0, trace1 ]
     data=[trace0, trace1]
-    out ='<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>' + py.offline.plot(data, include_plotlyjs=False, output_type='div')
+    out = py.offline.plot(data, include_plotlyjs=True, output_type='div')
     return out
 
 
@@ -58,6 +67,9 @@ def get_scattered_graph():
 	out = ImportedJs+py.offline.plot(data, include_plotlyjs=False, output_type='div')
 	return out
 
+@app.route('/dashboard')
+def get_dashboard():
+	return render_template('dashboard.html')
 
 @app.route('/get_pie_chart')
 def get_pie_chart():

@@ -37,35 +37,102 @@
     r.setAttribute("id", "id_" + i);
     document.getElementById("myForm").appendChild(r);
   }
+
+
+  function getLinearForm(){
+    myForm = document.getElementById("myForm");
+    var r = document.createElement('span');
+    var x_axis = document.createElement("INPUT");
+    x_axis.setAttribute("type", "text");
+    x_axis.setAttribute("placeholder", "x-axis");
+    x_axis.setAttribute("id","x-axis");
+    var y_axis = document.createElement("INPUT");
+    y_axis.setAttribute("type", "text");
+    y_axis.setAttribute("placeholder", "y-axis");
+    y_axis.setAttribute("id","y-axis");
+    button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('id', "submit-btn");
+    button.setAttribute("value", "Draw");
+    button.setAttribute("class", "btn btn-primary");
+    button.setAttribute("onclick", 'doSomething()');
+    myForm.appendChild(r);
+    myForm.appendChild(x_axis);
+    myForm.appendChild(y_axis);
+    myForm.appendChild(button);
+  }
   function getScatterForm(){
-    // alert("andar to aa hi gaya mein");
-    var number = 5;
-    // document.getElementById("member").value;
-    // Container <div> where dynamic content will be placed
-    var container = document.getElementById("container");
-    // Clear previous contents of the container
-    // alert("yaha bhi aa gaya");
-    // while (container.hasChildNodes()) {
-    //   // alert("iske andar kaise aa gaya mein");
-    //   container.removeChild(container.lastChild);
+    myForm = document.getElementById("myForm");
+    var r = document.createElement('span');
+    var x_axis = document.createElement("INPUT");
+    x_axis.setAttribute("type", "text");
+    x_axis.setAttribute("placeholder", "x-axis");
+    x_axis.setAttribute("id","x-axis");
+    var y_axis = document.createElement("INPUT");
+    y_axis.setAttribute("type", "text");
+    y_axis.setAttribute("placeholder", "y-axis");
+    y_axis.setAttribute("id","y-axis");
+    button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('id', "submit-btn");
+    button.setAttribute("value", "Draw");
+    button.setAttribute("class", "btn btn-primary");
+    button.setAttribute("onclick", 'getScatteredGraph()');
+    myForm.appendChild(r);
+    myForm.appendChild(x_axis);
+    myForm.appendChild(y_axis);
+    myForm.appendChild(button);
+
+
+    // var number = 5;
+    // // document.getElementById("member").value;
+    // // Container <div> where dynamic content will be placed
+    // var container = document.getElementById("container");
+    // // Clear previous contents of the container
+    // // alert("yaha bhi aa gaya");
+    // // while (container.hasChildNodes()) {
+    // //   // alert("iske andar kaise aa gaya mein");
+    // //   container.removeChild(container.lastChild);
+    // // }
+    // // alert("yaha bhi aa gaya");
+    // for (i=0;i<number;i++){
+    //   container.appendChild(document.createTextNode("Member " + (i+1)));
+    //   var input = document.createElement("input");
+    //   input.type = "text";
+    //   input.name = "member" + i;
+    //   container.appendChild(input);
+    //   container.appendChild(document.createElement("br"));
     // }
-    // alert("yaha bhi aa gaya");
-    for (i=0;i<number;i++){
-      container.appendChild(document.createTextNode("Member " + (i+1)));
-      var input = document.createElement("input");
-      input.type = "text";
-      input.name = "member" + i;
-      container.appendChild(input);
-      container.appendChild(document.createElement("br"));
-    }
-    // alert("yaha bhi aa gaya");
-    var button = document.createElement("button");
-    button.type = 'button';
-    button.name = "submitButton";
-    button.id = "submitButton";
-    container.appendChild(button);
-    container.appendChild(document.createElement("br"));
-    alert("ab to khatm bhi ho gaya");
+    // // alert("yaha bhi aa gaya");
+    // var button = document.createElement("button");
+    // button.type = 'button';
+    // button.name = "submitButton";
+    // button.id = "submitButton";
+    // container.appendChild(button);
+    // container.appendChild(document.createElement("br"));
+    // alert("ab to khatm bhi ho gaya");
+  }
+  function getPieForm(){
+    myForm = document.getElementById("myForm");
+    var r = document.createElement('span');
+    var x_axis = document.createElement("INPUT");
+    x_axis.setAttribute("type", "text");
+    x_axis.setAttribute("placeholder", "categories");
+    x_axis.setAttribute("id","categories");
+    var y_axis = document.createElement("INPUT");
+    y_axis.setAttribute("type", "text");
+    y_axis.setAttribute("placeholder", "NumericValue");
+    y_axis.setAttribute("id","NumericValue");
+    button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('id', "submit-btn");
+    button.setAttribute("value", "Draw");
+    button.setAttribute("class", "btn btn-primary");
+    button.setAttribute("onclick", 'getPieChart()');
+    myForm.appendChild(r);
+    myForm.appendChild(x_axis);
+    myForm.appendChild(y_axis);
+    myForm.appendChild(button);
   }
   function doSomething() {
     var xhttp = new XMLHttpRequest();
@@ -129,18 +196,26 @@
   }
 </script>
 
-<img src="https://conceptdraw.com/a424c4/p1/preview/640/pict--scatter-chart-quality-characteristic-xxx" onclick="getScatterForm()">
+<!-- <img src="https://conceptdraw.com/a424c4/p1/preview/640/pict--scatter-chart-quality-characteristic-xxx" onclick="getScatterForm()">
 <img src="https://www.mathworks.com/help/examples/matlab/win64/SavingAndLoadingHistogramObjectsExample_01.png" onclick="getHistogram()">
 <img src="https://www.thoughtworks.com/mingle/docs/resources/images/ec_piechart_status.png" onclick="getPieChart()">
 <img src="http://www.leoisaac.com/com/images/numberedtable.gif" onclick="getTable()">
-<div id="container"></div>
+ --><div id="container"></div>
+
 <div id="demo">
   <h2>Let AJAX change this text</h2>
-  <button type="button" onclick="doSomething()">Draw linear Graph</button>
+  <button type="button" onclick="getLinearForm()">Draw linear Graph</button>
   <button type="button" onclick="getHistogram()">Draw Histogram</button>
-  <button type="button" onclick="getPieChart()">Draw PieChart</button>
-  <button type="button" onclick="getScatteredGraph()">Draw ScatteredGraph</button>
+  <button type="button" onclick="getPieForm()">Draw PieChart</button>
+  <button type="button" onclick="getScatterForm()">Draw ScatteredGraph</button>
   <button type="button" onclick="getTable()">Draw Table</button>
+</div>
+<div class="three">
+<h2>Dynamic Form!</h2>
+<form action="#" id="mainform" method="get" name="mainform">
+<span id="myForm"></span>
+<!-- <p></p><input type="submit" value="Submit"> -->
+</form>
 </div>
 
 
